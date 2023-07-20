@@ -1,4 +1,50 @@
+*{
+    box-sizing: border-box;
+    /* border: .5px solid red ; */
+}
+
+
 body {
-    background-color: darkolivegreen;
+    background-color: lightslategray;
     color: white;
 }
+
+
+header {
+    background-color: darkolivegreen ;
+    display:flex;
+    justify-content: space-around;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+.game-body{
+    display: flex;
+    flex-direction: column;
+    width: 66%;
+}
+
+.game-row{
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.game-square{
+    width: 4rem;
+    height: 4rem;
+    border: .5px solid white;
+    border-radius: 5%;
+    box-shadow: .15rem .15rem lightgray;
+}
+/* toggle classes whether div's letter is right or wrong */
