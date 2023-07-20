@@ -46,5 +46,9 @@ main{
     border: .5px solid white;
     border-radius: 5%;
     box-shadow: .15rem .15rem lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
 }
 /* toggle classes whether div's letter is right or wrong */
