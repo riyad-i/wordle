@@ -51,4 +51,11 @@ main{
     align-items: center;
     font-size: 4rem;
 }
+
+
+.is-locked{
+    color: grey;
+}
+
+
 /* toggle classes whether div's letter is right or wrong */
