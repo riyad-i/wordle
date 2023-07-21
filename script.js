@@ -114,16 +114,23 @@ function removeLastLetter(){ //backspace key
         }
         else{
             for (square of row.children){
+                if (row.children[4].innerText != ''){
+                    row.children[4].innerText =''
+                    break
+                }
                 if (square.innerText != ''){//square has letter
                     i++
                 }
                 else{
-                    console.log(square);
-                    row.children[i].innerText=''
+                    row.children[i].innerText='' //
                 }
             }
         }
     }
+}
+
+function checkIfRealWord(){
+
 }
 
 
