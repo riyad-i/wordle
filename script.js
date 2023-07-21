@@ -56,9 +56,9 @@ body.addEventListener("keydown", addLetter)
 // guess1Div.classList.add('is-locked')
 
 function addLetter(e){
-    // if (e['key'] == 'Backspace'){
-
-    // }
+    if (e['key'] == 'Backspace'){
+        removeLastLetter()
+    }
     if (e['key'] == 'Enter'){ //check if real word, than add locked-in class to row, add all letters to guess1 than checkGuess()
         // console.log('hi');
     }
@@ -71,7 +71,7 @@ function addLetter(e){
             for (square of row.children){
                 if (square.innerText == '' && alphabet.includes(e['key'])){
                     square.innerText = e['key']
-                    break
+                    break //adds letter only once to first empty square
                 }
                 else{//if square is not empty
 
@@ -106,7 +106,25 @@ function checkRowIsFull(row){
     }
 }
 
-
+function removeLastLetter(){ //backspace key
+    let i = -1;
+    for (row of gameBody.children){
+        if (row.classList.contains('is-locked')){
+            continue
+        }
+        else{
+            for (square of row.children){
+                if (square.innerText != ''){//square has letter
+                    i++
+                }
+                else{
+                    console.log(square);
+                    row.children[i].innerText=''
+                }
+            }
+        }
+    }
+}
 
 
 
