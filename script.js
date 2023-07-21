@@ -44,10 +44,20 @@ body = document.querySelector('body')
 
 // console.log(gameBody.children);
 
-
+// while (gameIsOn) {
+    // }
 body.addEventListener("keydown", addLetter)
 
+//if square is last child ...
+
+
 function addLetter(e){
+    // if (e['key'] == 'Backspace'){
+
+    // }
+    if (e['key'] == 'Enter'){ //check if real word, than add locked-in class to row
+        console.log('hi');
+    }
     for (row of gameBody.children){
         // console.log(row);
         if (row.classList.contains('is-locked')){//returns true if row has class is-locked
@@ -57,9 +67,10 @@ function addLetter(e){
             for (square of row.children){
                 if (square.innerText == ''){
                     square.innerText = e['key']
+                    break
                 }
                 else{//if square is not empty
-                    break
+                    continue
                 }
             }
             break //only do it to current row
