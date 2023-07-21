@@ -3,6 +3,7 @@ const word = "train"
 alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
 const gameIsOn = true
+const won = false
 
 const guess1 = ''
 const guess2 = ''
@@ -50,6 +51,9 @@ body = document.querySelector('body')
     // }
 body.addEventListener("keydown", addLetter)
 
+//if gameIsOn false, tell correct word and whether won or lost in amount of correct guesses, offer to play again
+
+
 //if square is last child ...
 
 
@@ -77,10 +81,10 @@ function addLetter(e){
 
                     if (e['key'] == 'Enter'){
                         if (checkRowIsFull(row)){ //returns true if row is full of letters
-
+                            checkIfRealWord(row)//if real word, row is-locked, if not warn that word is invalid, than check guess
                             row.classList.add('is-locked')
 
-                        }else{continue}
+                        }//else{continue}//disregards enter if row is not full, redundant
 
                     }
                     continue//continues if square has letter already
@@ -105,7 +109,7 @@ function checkRowIsFull(row){
         return false
     }
 }
-
+//could've done while .innertext !=''
 function removeLastLetter(){ //backspace key
     let i = -1;
     for (row of gameBody.children){
@@ -122,7 +126,7 @@ function removeLastLetter(){ //backspace key
                     i++
                 }
                 else{
-                    row.children[i].innerText='' //
+                    row.children[i].innerText='' //deletes letter from square before first empty one
                 }
             }
         }
