@@ -54,8 +54,15 @@ main{
 
 
 .is-locked{
-    color: grey;
+    color: lightgrey;
 }
+
+
+.is-locked .game-square{
+    background-color: darkgray;
+}
+
+
 
 
 /* toggle classes whether div's letter is right or wrong */

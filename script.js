@@ -1,5 +1,7 @@
 const word = "train"
 
+alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
 const gameIsOn = true
 
 const guess1 = ''
@@ -51,12 +53,14 @@ body.addEventListener("keydown", addLetter)
 //if square is last child ...
 
 
+// guess1Div.classList.add('is-locked')
+
 function addLetter(e){
     // if (e['key'] == 'Backspace'){
 
     // }
-    if (e['key'] == 'Enter'){ //check if real word, than add locked-in class to row
-        console.log('hi');
+    if (e['key'] == 'Enter'){ //check if real word, than add locked-in class to row, add all letters to guess1 than checkGuess()
+        // console.log('hi');
     }
     for (row of gameBody.children){
         // console.log(row);
@@ -65,16 +69,40 @@ function addLetter(e){
         }
         else{
             for (square of row.children){
-                if (square.innerText == ''){
+                if (square.innerText == '' && alphabet.includes(e['key'])){
                     square.innerText = e['key']
                     break
                 }
                 else{//if square is not empty
-                    continue
+
+                    if (e['key'] == 'Enter'){
+                        if (checkRowIsFull(row)){ //returns true if row is full of letters
+
+                            row.classList.add('is-locked')
+
+                        }else{continue}
+
+                    }
+                    continue//continues if square has letter already
                 }
             }
             break //only do it to current row
         } 
+    }
+}
+
+function checkRowIsFull(row){
+    let nonEmptySquares = 0
+    for (square of row.children){
+        if (square.innerText != ''){
+            nonEmptySquares++
+        }
+    }
+    if (nonEmptySquares == 5){
+        return true
+    }
+    else{
+        return false
     }
 }
 
