@@ -15,3 +15,8 @@ The color of the tiles will change to show how close your guess was to the word.
 
 ![How To Play](./HowToPlay.png)
 
+# Tech Stack Used: 
+
+HTML
+CSS
+JavaScript
