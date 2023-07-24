@@ -2556,7 +2556,6 @@ par.innerText=`Words Guessed Correct: ${wins}`
 
 
 function clear(e){
-    console.log('hi');
     for (row of gameBody.children){
         row.classList.remove('is-locked')
         // for (square of row.children){
@@ -2578,4 +2577,5 @@ function clear(e){
     word = randomWord()
     wordArray = word.split('')
     gameBody.focus()
+    gameBody.blur()
 }
