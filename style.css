@@ -82,6 +82,11 @@ button {
     justify-self: center;
     align-self: center;
     margin-top: 60 px;
+    border-radius:  5%;
+}
+
+h2 {
+    font-size: 40px;
 }
 
 /* toggle classes whether div's letter is right or wrong */

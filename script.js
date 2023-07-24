@@ -2358,7 +2358,7 @@ word = randomWord()
 // const word = randomList1[randInt]
 // console.log(randomList1);
 
-const wordArray = word.split('')
+let wordArray = word.split('')
 // console.log(word);
 
 alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
@@ -2403,7 +2403,7 @@ body.addEventListener("keydown", addLetter)
 
 
 // guess1Div.classList.add('is-locked')
-
+let wins = 0
 let guessesTaken = 0
 
 function addLetter(e){
@@ -2435,6 +2435,8 @@ function addLetter(e){
                                     alert(`You Win in ${guessesTaken} guesses! Congratulations!`)
                                     won = true
                                     gameIsOn = false
+                                    wins++
+                                    par.innerText=`Words Guessed Correct : ${wins}`
                                     
                                 } //returns true if guess is right, tell user they were right, if false, check if user out of guesses to say gameover
                                 else{if (guessesTaken==6){
@@ -2539,7 +2541,7 @@ function checkGuess(row){
 
 button = document.querySelector('button')
 
-button.addEventListener('click', refresh)
+button.addEventListener('click', clear)
 
 
 
@@ -2547,15 +2549,31 @@ function refresh(){
     location.reload()
 }
 
+
+let par = document.querySelector('h2')
+par.innerText=`Words Guessed Correct: ${wins}`
+console.log(par)
+
 function clear(){
     for (row of gameBody.children){
         row.classList.remove('is-locked')
-        for (square of row.children){
-            square.innerText= ''
+        // for (square of row.children){
+        //     console.log(square);
+        //     square.innerText= ''
+        //     // square.classlist.remove('green')
+        //     // square.classlist.remove('yellow')
+        //     console.log(square)
+        // }
+        for (let i = 0 ; i<5 ; i++){
+            console.log(row.children[i]);
+            row.children[i].innerText=''
+            row.children[i].classList.remove('green')
+            row.children[i].classList.remove('yellow')
         }
     }
     guessesTaken = 0
     gameIsOn = true
     won = false
     word = randomWord()
+    wordArray = word.split('')
 }
