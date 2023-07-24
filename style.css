@@ -62,7 +62,11 @@ main{
     background-color: darkgray;
 }
 
+.is-locked .green {
+    background-color: green;
+}
 
-
-
+.is-locked .yellow {
+    background-color: yellow;
+}
 /* toggle classes whether div's letter is right or wrong */

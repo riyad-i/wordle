@@ -1,6 +1,10 @@
-const word = "train"
+const word = "train" //randomize
+const wordArray = word.split('')
+
 
 alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+// const wordList = JSON.parse(./wordle.json)
 
 const gameIsOn = true
 const won = false
@@ -81,8 +85,16 @@ function addLetter(e){
 
                     if (e['key'] == 'Enter'){
                         if (checkRowIsFull(row)){ //returns true if row is full of letters
-                            checkIfRealWord(row)//if real word, row is-locked, if not warn that word is invalid, than check guess
-                            row.classList.add('is-locked')
+                            if(checkIfRealWord(row)){//if real word, row is-locked, if not warn that word is invalid, than check guess
+
+                                row.classList.add('is-locked')
+                                checkGuess(row) //returns true if guess is right, tell user they were right, if false, check if user out of guesses to say gameover
+
+                            }
+
+
+                            else{alert('Not a valid word')}
+                            
 
                         }//else{continue}//disregards enter if row is not full, redundant
 
@@ -134,8 +146,21 @@ function removeLastLetter(){ //backspace key
 }
 
 function checkIfRealWord(){
-
+    return true
 }
 
 
-
+function checkGuess(row){
+    let guess=[]
+    for (square of row.children){
+        guess.push(square.innerText);
+    }
+    for (i=0;i<5;i++){
+        if (guess[i]==wordArray[i]){
+            row.children[i].classList.add('green')
+        }
+        else if(wordArray.includes(guess[i])){
+            row.children[i].classList.add('yellow')
+        }
+    }
+}
