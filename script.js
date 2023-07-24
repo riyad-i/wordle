@@ -2424,9 +2424,8 @@ function addLetter(e){
     if (e['key'] == 'Backspace'){
         removeLastLetter()
     }
-    if (e['key'] == 'Enter'){ //check if real word, than add locked-in class to row, add all letters to guess1 than checkGuess()
-        // console.log('hi');
-    }
+    // if (e['key'] == 'Enter'){ //check if real word, than add locked-in class to row, add all letters to guess1 than checkGuess()
+    // }
     for (row of gameBody.children){
         // console.log(row);
         if (row.classList.contains('is-locked')){//returns true if row has class is-locked
@@ -2552,5 +2551,12 @@ function checkGuess(row){
     else {return false}
 }
 
+button = document.querySelector('button')
+
+button.addEventListener('click', refresh)
 
 
+
+function refresh(){
+    location.reload()
+}

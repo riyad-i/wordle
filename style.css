@@ -69,4 +69,14 @@ main{
 .is-locked .yellow {
     background-color: yellow;
 }
+
+
+button {
+    background-color: lightblue;
+    width: 4rem;
+    justify-self: center;
+    align-self: center;
+    margin-top: 60 px;
+}
+
 /* toggle classes whether div's letter is right or wrong */
