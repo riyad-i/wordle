@@ -2368,12 +2368,12 @@ alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n"
 let gameIsOn = true
 let won = false
 
-const guess1 = ''
-const guess2 = ''
-const guess3 = ''
-const guess4 = ''
-const guess5 = ''
-const guess6 = ''
+// const guess1 = ''
+// const guess2 = ''
+// const guess3 = ''
+// const guess4 = ''
+// const guess5 = ''
+// const guess6 = ''
 
 const guess1Div = document.getElementById('first-row');
 const guess2Div = document.getElementById('second-row');
@@ -2382,9 +2382,6 @@ const guess4Div = document.getElementById('fourth-row');
 const guess5Div = document.getElementById('fifth-row');
 
 const gameBody = document.querySelector('.game-body')
-
-// console.log(guess1=== true);
-
 
 body = document.querySelector('body')
 
@@ -2397,14 +2394,12 @@ par2.innerText=`Cumulative Guesses: ${fullGuessCount}`
 
 // while (gameIsOn) {
     // }
+
+
 body.addEventListener("keydown", addLetter)
 
-//if gameIsOn false, tell correct word and whether won or lost in amount of correct guesses, offer to play again
 
 
-
-
-// guess1Div.classList.add('is-locked')
 let wins = 0
 let guessesTaken = 0
 
