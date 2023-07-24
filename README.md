@@ -1,2 +1,2 @@
 # wordle
-riyad-i.github.io
+https://riyad-i.github.io/wordle/
