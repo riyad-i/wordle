@@ -2333,7 +2333,7 @@ function randomWord(){
     console.log(word);
     return word
 }
-word = randomWord()
+let word = randomWord()
 
 // word = list[randInt]
 // console.log(word);
@@ -2407,60 +2407,62 @@ function addLetter(e){
     if (e['key'] == 'Backspace'){
         removeLastLetter()
     }
-    // if (e['key'] == 'Enter'){ //check if real word, than add locked-in class to row, add all letters to guess1 than checkGuess()
-    // }
-    for (row of gameBody.children){
-        // console.log(row);
-        if (row.classList.contains('is-locked')){//returns true if row has class is-locked
-            continue //if row is locked skip to next row
-        }
-        else{
-            for (square of row.children){
-                if (square.innerText == '' && alphabet.includes(e['key'])){
-                    square.innerText = e['key']
-                    break //adds letter only once to first empty square
-                }
-                else{//if square is not empty
+    else{
+        // if (e['key'] == 'Enter'){ //check if real word, than add locked-in class to row, add all letters to guess1 than checkGuess()
+        // }
+        for (row of gameBody.children){
+            // console.log(row);
+            if (row.classList.contains('is-locked')){//returns true if row has class is-locked
+                continue //if row is locked skip to next row
+            }
+            else{
+                for (square of row.children){
+                    if (square.innerText == '' && alphabet.includes(e['key'])){
+                        square.innerText = e['key']
+                        break //adds letter only once to first empty square
+                    }
+                    else{//if square is not empty
 
-                    if (e['key'] == 'Enter'){
-                        if (checkRowIsFull(row)){ //returns true if row is full of letters
-                            if(checkIfRealWord(row)){//if real word, row is-locked, if not warn that word is invalid, than check guess
+                        if (e['key'] == 'Enter'){
+                            if (checkRowIsFull(row)){ //returns true if row is full of letters
+                                if(checkIfRealWord(row)){//if real word, row is-locked, if not warn that word is invalid, than check guess
 
-                                row.classList.add('is-locked')
-                                guessesTaken++
-                                fullGuessCount++
-                                par2.innerText=`Cumulative Guesses: ${fullGuessCount}`
-                                if(checkGuess(row)){
-                                    alert(`You Win in ${guessesTaken} guesses! Congratulations!`)
-                                    won = true
-                                    gameIsOn = false
-                                    wins++
-                                    par.innerText=`Words Guessed Correct : ${wins}`
-                                    
-                                } //returns true if guess is right, tell user they were right, if false, check if user out of guesses to say gameover
-                                else{if (guessesTaken==6){
-                                    alert(`You've run out of guesses. You Lose! The correct word was ${word}!`)
-                                    gameIsOn = false
+                                    row.classList.add('is-locked')
+                                    guessesTaken++
+                                    fullGuessCount++
+                                    par2.innerText=`Cumulative Guesses: ${fullGuessCount}`
+                                    if(checkGuess(row)){
+                                        alert(`You Win in ${guessesTaken} guesses! Congratulations!`)
+                                        won = true
+                                        gameIsOn = false
+                                        wins++
+                                        par.innerText=`Words Guessed Correct : ${wins}`
+                                        
+                                    } //returns true if guess is right, tell user they were right, if false, check if user out of guesses to say gameover
+                                    else{if (guessesTaken==6){
+                                        alert(`You've run out of guesses. You Lose! The correct word was ${word}!`)
+                                        gameIsOn = false
+                                    }
+
+                                    }//if out of guesses you lose
+                                    break
+
                                 }
 
-                                }//if out of guesses you lose
+
+                                else{alert('Not a valid word')}
                                 break
+                                
 
-                            }
+                            }//else{continue}//disregards enter if row is not full, redundant
 
-
-                            else{alert('Not a valid word')}
-                            break
-                            
-
-                        }//else{continue}//disregards enter if row is not full, redundant
-
+                        }
+                        continue//continues if square has letter already
                     }
-                    continue//continues if square has letter already
                 }
-            }
-            break //only do it to current row
-        } 
+                break //only do it to current row
+            } 
+        }
     }
 }
 
@@ -2507,7 +2509,7 @@ function checkIfRealWord(row){
     for (square of row.children){
         guess.push(square.innerText);
     }
-    const guessString = guess.join('')
+    let guessString = guess.join('')
     if (bigList.includes(guessString)){
         return true
     }
@@ -2553,7 +2555,8 @@ let par = document.querySelector('h2')
 par.innerText=`Words Guessed Correct: ${wins}`
 
 
-function clear(){
+function clear(e){
+    console.log('hi');
     for (row of gameBody.children){
         row.classList.remove('is-locked')
         // for (square of row.children){
@@ -2574,4 +2577,5 @@ function clear(){
     won = false
     word = randomWord()
     wordArray = word.split('')
+    gameBody.focus()
 }
