@@ -1,5 +1,8 @@
 *{
     box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+
     /* border: .5px solid red ; */
 }
 
@@ -11,9 +14,11 @@ body {
 
 
 header {
-    background-color: darkolivegreen ;
+    background-color: lightslategray ;
     display:flex;
+    align-items: stretch;
     justify-content: space-around;
+    border-bottom: solid 1px #3a3a3c;
 }
 
 main{

@@ -2327,11 +2327,13 @@ const list = [
 // import list from './list.js'
 // console.log(list);
 
-
-const randInt = Math.floor(Math.random() * 2315)
-const word = list[randInt]
-console.log(word);
-
+function randomWord(){
+    let randInt = Math.floor(Math.random() * 2315)
+    let word = list[randInt]
+    console.log(word);
+    return word
+}
+word = randomWord()
 
 // word = list[randInt]
 // console.log(word);
@@ -2385,34 +2387,18 @@ const gameBody = document.querySelector('.game-body')
 
 
 body = document.querySelector('body')
-// body.addEventListener("keydown", hi)
-// function hi(e){
-//     console.log('hi');
-//     console.log(e['key']);
-//     console.log(e);
-//     const keyPressed = e['key']
-//     const newh1 = document.createElement('h1')
-//     body.appendChild(newh1)
-//     newh1.innerText = keyPressed
-// }
 
 //once return is pressed row is locked in
 
-// console.log(gameBody.children);
 
 
-
-// for (row of gameBody.children){
-//     row.classList.add("is-locked");
-// }
-
-// console.log(gameBody.children);
 
 // while (gameIsOn) {
     // }
 body.addEventListener("keydown", addLetter)
 
 //if gameIsOn false, tell correct word and whether won or lost in amount of correct guesses, offer to play again
+
 
 
 
@@ -2445,14 +2431,15 @@ function addLetter(e){
 
                                 row.classList.add('is-locked')
                                 guessesTaken++
-                                console.log(guessesTaken);
                                 if(checkGuess(row)){
-                                    alert('You Win!')
+                                    alert(`You Win in ${guessesTaken} guesses! Congratulations!`)
                                     won = true
+                                    gameIsOn = false
                                     
                                 } //returns true if guess is right, tell user they were right, if false, check if user out of guesses to say gameover
                                 else{if (guessesTaken==6){
                                     alert(`You've run out of guesses. You Lose! The correct word was ${word}!`)
+                                    gameIsOn = false
                                 }
 
                                 }//if out of guesses you lose
@@ -2520,7 +2507,6 @@ function checkIfRealWord(row){
         guess.push(square.innerText);
     }
     const guessString = guess.join('')
-    console.log(guessString);
     if (bigList.includes(guessString)){
         return true
     }
@@ -2559,4 +2545,17 @@ button.addEventListener('click', refresh)
 
 function refresh(){
     location.reload()
+}
+
+function clear(){
+    for (row of gameBody.children){
+        row.classList.remove('is-locked')
+        for (square of row.children){
+            square.innerText= ''
+        }
+    }
+    guessesTaken = 0
+    gameIsOn = true
+    won = false
+    word = randomWord()
 }
