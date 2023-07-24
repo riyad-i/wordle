@@ -2390,7 +2390,9 @@ body = document.querySelector('body')
 
 //once return is pressed row is locked in
 
-
+let fullGuessCount = 0
+let par2 = document.querySelector('p')
+par2.innerText=`Cumulative Guesses: ${fullGuessCount}`
 
 
 // while (gameIsOn) {
@@ -2431,6 +2433,8 @@ function addLetter(e){
 
                                 row.classList.add('is-locked')
                                 guessesTaken++
+                                fullGuessCount++
+                                par2.innerText=`Cumulative Guesses: ${fullGuessCount}`
                                 if(checkGuess(row)){
                                     alert(`You Win in ${guessesTaken} guesses! Congratulations!`)
                                     won = true
@@ -2552,7 +2556,7 @@ function refresh(){
 
 let par = document.querySelector('h2')
 par.innerText=`Words Guessed Correct: ${wins}`
-console.log(par)
+
 
 function clear(){
     for (row of gameBody.children){
@@ -2565,7 +2569,6 @@ function clear(){
         //     console.log(square)
         // }
         for (let i = 0 ; i<5 ; i++){
-            console.log(row.children[i]);
             row.children[i].innerText=''
             row.children[i].classList.remove('green')
             row.children[i].classList.remove('yellow')

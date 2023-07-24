@@ -89,4 +89,9 @@ h2 {
     font-size: 40px;
 }
 
+p {
+    margin-top: -40px;
+    font-size: 40px;
+}
+
 /* toggle classes whether div's letter is right or wrong */
